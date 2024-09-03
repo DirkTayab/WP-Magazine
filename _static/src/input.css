@@ -1,0 +1,345 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "general-regular";
+  src: url("../dist/fonts/GeneralSans-Regular.woff"),
+    url("../dist/fonts/GeneralSans-Regular.woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "general-semibold";
+  src: url("../dist/fonts/GeneralSans-Semibold.woff"),
+    url("../dist/fonts/GeneralSans-Semibold.woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "general-medium";
+  src: url("../dist/fonts/GeneralSans-Medium.woff"),
+    url("../dist/fonts/GeneralSans-Medium.woff2");
+  font-display: swap;
+}
+
+:root {
+  --light: 255, 255, 255;
+  --dark: 0, 0, 0;
+}
+
+.dark {
+  --dark: 255, 255, 255;
+  --light: 0, 0, 0;
+}
+
+@layer base {
+  body {
+    @apply overflow-x-hidden leading-6 font-generalRegular text-body;
+  }
+
+  body.open {
+    @apply h-screen overflow-y-hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply leading-snug uppercase font-generalSemiBold text-balance;
+  }
+
+  h1 {
+    @apply leading-none tracking-wide text-center text-huge whitespace-nowrap;
+  }
+
+  h2 {
+    @apply text-header leading-[1];
+  }
+
+  h3.article-header {
+    @apply text-[clamp(1.2rem,_6vw,_2rem)] capitalize leading-tight mb-5;
+  }
+
+  h4 {
+    @apply text-[clamp(1.2rem,_6vw,_1.4rem)]  mb-5;
+  }
+
+  h5 {
+    @apply mb-5;
+  }
+
+  h6 {
+    @apply mb-5;
+  }
+
+  img {
+    @apply block;
+  }
+
+  p {
+    @apply mb-4;
+  }
+
+  img {
+    @apply block;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-[1800px] mx-auto px-4 w-full overflow-x-hidden;
+  }
+
+  .category {
+    @apply px-3 py-1  border border-dark rounded-[20px] hover:bg-dark hover:text-light transition-all;
+  }
+
+  .article-wrapper div article:last-child {
+    @apply border-none;
+  }
+
+  .popular-wrapper div:last-child {
+    @apply border-none;
+  }
+
+  .grid-item {
+    @apply relative;
+  }
+
+  .grid-item > span {
+    @apply absolute bg-dark;
+  }
+
+  .grid-item span.after {
+    @apply w-[100vw] h-[1px] left-0 -top-[1px];
+  }
+
+  .grid-item span.before {
+    @apply h-[100vh] w-[1px] -left-[1px] top-0;
+  }
+
+  .details {
+    @apply items-center justify-between md:flex;
+  }
+
+  .details ul {
+    @apply items-center gap-8 mb-5 md:mb-0 md:flex;
+  }
+  .details ul span {
+    @apply font-generalSemiBold;
+  }
+
+  /* PAGINATION */
+
+  .pagination {
+    @apply flex justify-end my-10;
+  }
+
+  .pagination ul {
+    @apply flex items-center gap-5;
+  }
+
+  .pagination ul li {
+    @apply grid p-2 border size-8 place-content-center;
+  }
+  .pagination ul li.active {
+    @apply bg-dark text-light;
+  }
+  .pagination ul li:has(a > svg) {
+    @apply border-none;
+  }
+
+  /* SINGLE POST */
+
+  .single-article main h2,
+  .single-article main h3,
+  .single-article main h4,
+  .single-article main h5,
+  .single-article main h6 {
+    @apply normal-case;
+  }
+
+  .single-article main h2 {
+    @apply mb-5 text-3xl;
+  }
+
+  .single-article main h3 {
+    @apply mb-5 text-2xl;
+  }
+
+  .single-article main h4 {
+    @apply mb-5 text-xl;
+  }
+
+  .single-article main h5 {
+    @apply mb-5 text-lg;
+  }
+
+  .single-article main h6 {
+    @apply mb-5 text-base;
+  }
+
+  .single-article main p {
+    @apply mb-5;
+  }
+
+  .single-article main figure {
+    @apply mb-5;
+  }
+
+  .single-article main figure img {
+    @apply object-cover w-full;
+  }
+  .single-article main figure figcaption {
+    @apply py-1 text-xs;
+  }
+
+  .single-article main ul,
+  .single-article main ol {
+    @apply mb-5;
+  }
+
+  .single-article main ul li {
+    @apply relative ml-[17px];
+  }
+
+  .single-article main ul li::before {
+    @apply content-[''] absolute left-[-17px] top-[10px] w-[5px] h-[5px] bg-dark rounded-full;
+  }
+
+  .single-article main li {
+    @apply mb-1;
+  }
+
+  .single-article main blockquote {
+    @apply my-5 py-8 font-generalSemiBold text-[clamp(2rem,_6vw,_3rem)] italic leading-snug border-t border-b border-dark;
+  }
+
+  /* FORM */
+
+  input {
+    @apply w-full px-2 py-2 text-xs border outline-none placeholder:opacity-40 focus:border-dark;
+  }
+
+  button[type="button"] {
+    @apply px-4 py-2 text-xs uppercase outline-none whitespace-nowrap md:w-auto;
+  }
+
+  .link-arrow {
+    @apply flex items-center gap-2 mb-5 uppercase hover:underline md:mb-0 font-generalSemiBold;
+  }
+
+  .link-arrow svg {
+    @apply transition-all -translate-x-3 opacity-0;
+  }
+
+  .link-arrow:hover svg {
+    @apply translate-x-0 opacity-100;
+  }
+
+  .link-arrow.right {
+    @apply flex items-center gap-2 mb-5 uppercase transition-all hover:underline md:mb-0 font-generalSemiBold translate-x-9 hover:translate-x-0;
+  }
+
+  .link-arrow.right svg {
+    @apply transition-all -translate-x-10 opacity-0;
+  }
+
+  .link-arrow.right:hover svg {
+    @apply translate-x-0 opacity-100;
+  }
+
+  .title-wrapper {
+    @apply min-h-[20cqmin] md:min-h-[24cqmin] mt-[4cqmin] md:mt-0;
+  }
+
+  .main-menu {
+    @apply;
+  }
+
+  .main-menu-toggle span {
+    @apply transition-all will-change-transform;
+  }
+  .main-menu-toggle span:first-child {
+    @apply translate-y-[4px];
+  }
+
+  .main-menu-toggle span:last-child {
+    @apply translate-y-[-4px];
+  }
+
+  .main-menu-toggle.open span:first-child {
+    @apply translate-y-[0px] rotate-45;
+  }
+
+  .main-menu-toggle.open span:last-child {
+    @apply translate-y-[-2px] -rotate-45;
+  }
+}
+
+@layer utilities {
+  .icon-lg {
+    @apply w-[50px] h-[50px];
+  }
+
+  .icon-sm {
+    @apply w-[20px] h-[20px];
+  }
+}
+
+/* MISSING IN TAILWIND */
+.single-article main ol {
+  counter-reset: counter-list;
+}
+
+.single-article main ol li {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  counter-increment: counter-list;
+}
+
+.single-article main ol li::before {
+  content: counter(counter-list) ". ";
+}
+
+.title-wrapper {
+  container-type: inline-size;
+  overflow-y: visible;
+}
+
+.title-wrapper h1 {
+  resize: both;
+  font-size: 18cqi;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.marquee {
+  animation: marquee 20s linear infinite;
+}
+
+.marquee-home:hover p {
+  animation-play-state: paused;
+}
+
+.main-overlay {
+  transition: 0.5s ease-in-out;
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+
+.main-overlay.open {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
