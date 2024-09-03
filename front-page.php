@@ -49,7 +49,7 @@
 
               <div class="details" id="feature-details">
                 <ul class="">
-                  <li><span>Author:</span> <?php echo get_field('author')?></li>
+                  <li><span>Author:</span> <?php echo get_field('author')->post_title?></li>
                   <li><span>Date:</span> <?php echo get_the_date('j, F Y')?></li>
                   <li><span>Duration:</span> <?php echo get_field('duration') ?></li>
                 </ul>
@@ -107,7 +107,7 @@
 
                     <div class="details">
                       <ul>
-                        <li><span>Author:</span> <?php echo get_field('author')?></li>
+                        <li><span>Author:</span> <?php echo get_field('author')->post_title?></li>
                         <li><span>Date:</span> <?php echo get_the_date('j, F Y')?></li>
                         <li><span>Duration:</span> <?php echo get_field('duration') ?></li>
                       </ul>
@@ -122,7 +122,7 @@
                     wp_reset_postdata();
                 ?>
               </div>
-              <a href="#" class="link-arrow"
+              <a href="<?php echo site_url('/magazines')?>" class="link-arrow"
                 >All Articles
                 <svg class="icon-sm" role="image">
                   <use xlink:href="./img/sprite.svg#icon-arrow-right"></use>
@@ -147,7 +147,7 @@
                     </h5>
                     <small
                       ><span class="pr-3 font-generalMedium">Author:</span>
-                      <?php echo get_field('author')?></small
+                      <?php echo get_field('author')->post_title?></small
                     >
                   </div>
                 </div>
@@ -176,6 +176,77 @@
                 </form>
               </div>
             </aside>
+          </div>
+        </div>
+</section>
+
+<!-- Podcast -->
+<section class="mb-40 podcast">
+        <div class="container">
+          <div
+            class="flex items-center justify-between py-10 pb-20 border-t border-dark"
+          >
+            <h2 class="uppercase">Podcast</h2>
+            <a href="<?php echo site_url('/Podcast')?>" class="link-arrow right" id="podcast-link"
+              >All Episodes
+              <svg class="icon-sm" role="image">
+                <use xlink:href="./img/sprite.svg#icon-arrow-right"></use>
+              </svg>
+            </a>
+          </div>
+
+          <div
+            class="grid overflow-hidden border lg:grid-cols-3 border-dark podcast-grid">
+            <?php $podcast = new WP_Query(array(
+                'post_type' => 'podcasts',
+                'posts_per_page' => 3,
+            ))?>
+            <?php if($podcast->have_posts()) : while($podcast->have_posts()) : $podcast->the_post() ?>
+            <div class="p-5 md:p-10 grid-item">
+              <span class="after"></span>
+              <span class="before"></span>
+              <div class="relative mb-5">
+                <img
+                  src="<?php echo get_field('thumbnail')?>"
+                  alt=""
+                  class="object-cover w-full h-full"
+                />
+                <h3 class="absolute text-4xl text-white uppercase top-5 left-5">
+                  Fyrre <span class="block text-lg">podcast</span>
+                </h3>
+                <p
+                  class="absolute bottom-0 text-2xl text-white left-5 font-generalSemiBold"
+                >
+                  EP 05
+                </p>
+                <a href="#" class="absolute right-5 bottom-5">
+                  <svg class="icon-lg" role="image">
+                    <use xlink:href="./img/sprite.svg#icon-podcast-arrow"></use>
+                  </svg>
+                </a>
+              </div>
+
+              <h3 class="article-header">
+                <?php the_title()?>
+              </h3>
+
+              <div class="items-center justify-between md:flex">
+                <ul class="items-center gap-8 mb-5 md:mb-0 md:flex">
+                  <li>
+                    <span class="font-generalSemiBold">Date:</span><?php echo get_the_date('j, F Y')?>
+                  </li>
+                  <li>
+                    <span class="font-generalSemiBold">Duration:</span> <?php echo get_field('duration')?>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <?php endwhile;
+                else:
+                    echo "No More Post";
+                endif;
+                wp_reset_postdata();
+            ?>
           </div>
         </div>
 </section>
