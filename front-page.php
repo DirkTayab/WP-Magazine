@@ -53,7 +53,7 @@
                   <li><span>Date:</span> <?php echo get_the_date('j, F Y')?></li>
                   <li><span>Duration:</span> <?php echo get_field('duration') ?></li>
                 </ul>
-                <a href="#" class="category" id="feature-category"><?php echo get_the_terms($post->ID, 'categories')[0]->name  ?></a>
+                <a href="#" class="category" id="feature-category"><?php echo get_the_terms($post->ID, 'categories')[0]->name?></a>
               </div>
             </div>
           </article>

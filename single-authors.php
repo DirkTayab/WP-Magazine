@@ -89,19 +89,13 @@
 
         <div class="grid overflow-hidden border md:grid-cols-2 border-dark">
 
-         <?php $a = new WP_Query(array(
-            'post_type' => 'magazines',
-            // 'posts_per_page' => -1,  
-         ))?>
-         <?php if($a->have_posts()) : while($a->have_posts()) : $a->the_post() ?>
-
-          <?php $magazines = get_field('magazines')?>
+          <?php $magazines = get_field('magazine')?>
           <?php if($magazines):?>
             <?php foreach($magazines as $a) : setup_postdata($a);
-                $thumbnail = get_field('thumbnail', $subitem->ID)['url'];
-                $title = get_the_title($subitem->ID);
-                $duration = get_field('duration', $subitem->ID);
-                $date = get_the_date('j, F Y', $subitem->ID)
+                $thumbnail = get_field('thumbnail', $a->ID);
+                $title = get_the_title($a->ID);
+                $duration = get_field('duration', $a->ID);
+                $date = get_the_date('j, F Y', $a->ID)
                 ?>
           <div class="p-10 grid-item">
             <div class="relative flex flex-col gap-10 mb-5 md:flex-row">
@@ -131,12 +125,7 @@
           <?php endforeach;
             endif;?>
 
-          <?php endwhile;
-            else:
-                echo "No More Post";
-            endif;
-            wp_reset_postdata();
-        ?>
+
 
         </div>
       </div>

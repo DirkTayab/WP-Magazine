@@ -33,7 +33,7 @@
             id="main-overlay"
           >
             <a
-              href="<?php echo site_url('/magazines')?>"
+              href="<?php echo site_url('/magazine')?>"
               class="absolute uppercase top-8 left-4 font-generalSemiBold"
               nav-linkitem
               id="menu-logo"
@@ -48,21 +48,21 @@
               <li>
                 <a
                   class="font-generalSemiBold nav-linkitem uppercase text-[clamp(2rem,_10vw,_8rem)]"
-                  href="articles.html"
+                  href="<?php echo site_url('/magazine')?>"
                   >Articles</a
                 >
               </li>
               <li>
                 <a
                   class="font-generalSemiBold nav-linkitem uppercase text-[clamp(2rem,_10vw,_8rem)]"
-                  href="<?php echo site_url('/podcasts')?>"
+                  href="<?php echo site_url('/podcast')?>"
                   >Podcasts</a
                 >
               </li>
               <li>
                 <a
                   class="font-generalSemiBold nav-linkitem uppercase text-[clamp(2rem,_10vw,_8rem)]"
-                  href="<?php echo site_url('/authors')?>"
+                  href="<?php echo site_url('/author')?>"
                   >Authors</a
                 >
               </li>
