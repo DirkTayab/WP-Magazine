@@ -33,7 +33,7 @@
             id="main-overlay"
           >
             <a
-              href="<?php echo site_url('/magazine')?>"
+              href="<?php echo site_url('/')?>"
               class="absolute uppercase top-8 left-4 font-generalSemiBold"
               nav-linkitem
               id="menu-logo"
